@@ -61,6 +61,7 @@
 .hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; overflow: hidden; isolation: isolate; }
 .hero__backdrop { position: absolute; inset: 0; z-index: -1; }
 .hero__backdrop img { width: 100%; height: 100%; object-fit: cover; animation: hero-settle 2.4s var(--ease) both; }
+.hero__video { width: 100%; height: 100%; object-fit: cover; }
 .hero__backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
 .hero__content { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 .hero__content h1, .hero__content h2 { max-width: 48rem; }
