@@ -1,0 +1,79 @@
+/* Sections, containers, grids */
+.section { position: relative; padding: var(--section-pad) var(--page-pad); }
+.section--offset { padding-top: calc(var(--section-pad) + var(--nav-h)); }
+.section--page-head { padding-bottom: calc(var(--section-pad) * 0.5); }
+.container { width: 100%; max-width: var(--container); margin-inline: auto; }
+.stack { display: flex; flex-direction: column; gap: var(--gap, 1.5rem); }
+.stack--sm { --gap: 0.75rem; }
+.stack--lg { --gap: 2.25rem; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap, 0.75rem); }
+.row--center { justify-content: center; }
+
+.section-head { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: var(--content-gap); }
+.section-head__text { display: flex; flex-direction: column; gap: 0.75rem; }
+.section-head__action { margin-top: 0.75rem; }
+.section-head--split { flex-direction: row; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+
+/* two-column text + media */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--row-gap) var(--col-gap); align-items: center; }
+.split__text { display: flex; flex-direction: column; gap: 1.5rem; }
+.split__body { display: flex; flex-direction: column; gap: 1.5rem; }
+.split--reverse > .split__text { order: 2; }
+.split--top { align-items: start; }
+.rows { display: flex; flex-direction: column; gap: var(--row-gap); }
+.rows .split { gap: 2.25rem var(--col-gap); }
+
+/* grids */
+.grid { display: grid; gap: var(--grid-gap); }
+.grid--cards { grid-template-columns: repeat(4, 1fr); gap: var(--card-gap); }
+.grid--projects { grid-template-columns: repeat(2, 1fr); gap: var(--card-gap); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); gap: var(--row-gap) 3.25rem; }
+.grid--4 { grid-template-columns: repeat(4, 1fr); gap: var(--row-gap) var(--grid-gap); }
+
+.masonry { columns: 3; column-gap: var(--card-gap); }
+.masonry__item { break-inside: avoid; margin-bottom: var(--card-gap); }
+
+@media (max-width: 991px) {
+  .split { grid-template-columns: 1fr; }
+  .split--reverse > .split__text { order: 0; }
+  .grid--cards, .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: 1fr; gap: 2.25rem var(--grid-gap); }
+  .grid--3 { row-gap: var(--row-gap); }
+  .masonry { columns: 1; }
+  .section-head__action { margin-top: 0.75rem; }
+.section-head--split { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 479px) {
+  .grid--cards, .grid--projects, .grid--4 { grid-template-columns: 1fr; }
+  .grid--4 { row-gap: 3.75rem; }
+}
+
+/* media / images */
+.media { position: relative; overflow: hidden; background: var(--ink-raised); border-radius: var(--radius); }
+.media img { width: 100%; height: 100%; object-fit: cover; }
+.ar-square { aspect-ratio: 1 / 1; }
+.ar-43 { aspect-ratio: 4 / 3; }
+.ar-32 { aspect-ratio: 3 / 2; }
+.media--zoom img { transition: transform 0.9s var(--ease); }
+.zoom-host:hover .media--zoom img, .media--zoom:hover img { transform: scale(1.035); }
+
+/* hero / backdrop */
+.hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; overflow: hidden; isolation: isolate; }
+.hero__backdrop { position: absolute; inset: 0; z-index: -1; }
+.hero__backdrop img { width: 100%; height: 100%; object-fit: cover; animation: hero-settle 2.4s var(--ease) both; }
+.hero__backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
+.hero__content { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.hero__content h1, .hero__content h2 { max-width: 48rem; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 0.5rem; }
+@keyframes hero-settle { from { transform: scale(1.06); } to { transform: scale(1); } }
+@media (max-width: 479px) { .hero__actions { flex-direction: column; align-items: center; } }
+
+.page-enter { animation: page-in 0.55s var(--ease) both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* scroll reveal (only active when JS has added .js to <html>) */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--d, 0ms); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* sections that follow a same-scheme sibling: halve the doubled gap */
+.section--flush-top { padding-top: 0; }

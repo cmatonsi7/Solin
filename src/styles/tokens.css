@@ -1,0 +1,113 @@
+/* ==========================================================================
+   DESIGN TOKENS — extracted from the Source 1 homepage (Relume build).
+   Everything visual on every page derives from these variables.
+   ========================================================================== */
+:root {
+  /* Brand palette */
+  --ink: #070707;
+  --ink-raised: #161616;
+  --charcoal: #262626;
+  --charcoal-raised: #424242;
+  --paper: #f8f4ed;
+  --paper-raised: #f0e6d5;
+  --gold: #c9a66b;
+  --gold-deep: #967c50;
+
+  /* Typography */
+  --font-heading: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Source declares 300; Playfair's lightest real weight is 400, which is what renders. */
+  --weight-heading: 400;
+  --tracking-heading: -0.01em;
+
+  --fs-h1: 4rem;
+  --fs-h2: 3.25rem;
+  --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-h5: 1.5rem;
+  --lh-h1: 1.1;
+  --lh-h2: 1.1;
+  --lh-h3: 1.1;
+  --lh-h4: 1.2;
+  --lh-h5: 1.2;
+  --fs-lead: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  /* Layout */
+  --container: 80rem;
+  --page-pad: 3rem;
+  --section-pad: 8.5rem;
+  --nav-h: 4.5rem;
+  --col-gap: 6rem;
+  --row-gap: 5rem;
+  --content-gap: 6rem;
+  --card-gap: 2.5rem;
+  --grid-gap: 2.25rem;
+  --body-max: 30rem;
+  --heading-max: 48rem;
+
+  /* Shape: the brand is square-cornered, flat, no shadows */
+  --radius: 0;
+  --border-width: 1px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 0.2s;
+}
+
+@media (max-width: 991px) {
+  :root {
+    --fs-h1: 3.25rem; --fs-h2: 2.75rem; --fs-h3: 2.25rem; --fs-h4: 1.75rem; --fs-h5: 1.5rem;
+    --page-pad: 2.375rem;
+    --section-pad: 6.625rem;
+    --col-gap: 3.625rem;
+    --content-gap: 4.5rem;
+    --card-gap: 2.25rem;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --fs-h1: 2.5rem; --fs-h2: 2.25rem; --fs-h3: 2rem; --fs-h4: 1.5rem; --fs-h5: 1.25rem;
+    --page-pad: 1.75rem;
+    --section-pad: 4.875rem;
+    --nav-h: 4rem;
+    --row-gap: 3.75rem;
+    --content-gap: 3.5rem;
+    --card-gap: 1.875rem;
+  }
+}
+
+/* ---- Colour schemes: applied per section; every component reads these vars ---- */
+.scheme-1, .scheme-2, .scheme-3 { background: var(--bg); color: var(--text); }
+.scheme-1 {
+  --bg: var(--ink); --bg-2: var(--ink-raised);
+  --heading: #f5f5f5; --text: #f5f5f5; --muted: rgba(245, 245, 245, 0.7);
+  --accent: var(--gold); --border: rgba(255, 255, 255, 0.2);
+  --btn-fill: var(--gold); --btn-text: var(--ink);
+  --btn2-text: #fff; --btn2-border: rgba(255, 255, 255, 0.2);
+  --tag-fill: rgba(201, 166, 107, 0.08);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --check-stroke: %23070707; --chevron-stroke: %23ffffff;
+}
+.scheme-2 {
+  --bg: var(--charcoal); --bg-2: var(--charcoal-raised);
+  --heading: #fff; --text: #fff; --muted: rgba(255, 255, 255, 0.7);
+  --accent: var(--gold); --border: rgba(255, 255, 255, 0.2);
+  --btn-fill: var(--gold); --btn-text: var(--ink);
+  --btn2-text: #fff; --btn2-border: rgba(255, 255, 255, 0.2);
+  --tag-fill: rgba(201, 166, 107, 0.08);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --check-stroke: %23070707; --chevron-stroke: %23ffffff;
+}
+.scheme-3 {
+  --bg: var(--paper); --bg-2: var(--paper-raised);
+  --heading: var(--ink); --text: var(--ink); --muted: rgba(7, 7, 7, 0.7);
+  --accent: var(--gold-deep); --border: rgba(7, 7, 7, 0.2);
+  --btn-fill: var(--ink); --btn-text: #fff;
+  --btn2-text: var(--ink); --btn2-border: rgba(7, 7, 7, 0.2);
+  --tag-fill: rgba(150, 124, 80, 0.08);
+  --input-border: rgba(7, 7, 7, 0.2);
+  --check-stroke: %23ffffff; --chevron-stroke: %23070707;
+}
