@@ -8,8 +8,7 @@ export default function Img({ name, alt, sizes = "100vw", eager = false, classNa
   const entry = images[name];
   if (!entry) { if (import.meta.env.DEV) console.warn(`Unknown image "${name}"`); return null; }
   const widths = imageWidths(entry);
-  const src = (w) => `/images/${name}-${w}.webp`;
-  return (
+const src = (w) => `${import.meta.env.BASE_URL}images/${name}-${w}.webp`;  return (
     <img
       className={className}
       src={src(widths.at(-1))}
